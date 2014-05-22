@@ -1,0 +1,130 @@
+.modal-dialog {
+    z-index:99;
+}
+
+.gridster * {
+  margin:0;
+  padding:0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+
+/*/
+/* demo
+/*/
+
+
+body {
+    font-size: 16px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #444;
+    background-color: #EFEFEF;
+    margin: 0;
+}
+
+/*.toolbar {
+    padding: 10px 25px 10px 25px;
+    background-color: #222;
+}
+
+.toolbar p {
+    color: #999;
+}
+
+.navbar {
+    margin-bottom: 10px;
+}
+
+.controls {
+    margin-bottom: 20px;
+}*/
+
+/*/
+/* gridster
+/*/
+
+.gridster ul {
+    background-color: #EFEFEF;
+}
+
+.gridster ul li {
+    border: 1px solid rgb(197, 197, 197);
+    background: white;
+    padding: 1px;
+    cursor: pointer;
+}
+
+.gridster ul li div.shinytinymce {
+    height: 100% !important;
+    background-color: white !important;
+}
+
+.gridster ul li>p {
+    display: none;
+}
+
+.gridster ul li:hover {
+    background: rgb(194, 194, 194);
+    cursor: pointer !important;
+}
+
+.gridster ul li div.btn {
+    padding: 3px 8px;
+    position: absolute !important;
+    top: -29px;
+    z-index: 99999;
+}
+
+.gridster ul li div.chartEditor {
+    left: 80px;
+}
+
+.gridster ul li button.deleteme {
+    right: 5px;
+    opacity: .6;
+    position: absolute !important;
+    z-index: 99999;
+}
+
+.gridster ul li button.deleteme:hover {
+    opacity: 1 !important;
+}
+
+.gridster {
+    margin: 0 auto;
+
+    opacity: .8;
+
+    -webkit-transition: opacity .6s;
+    -moz-transition: opacity .6s;
+    -o-transition: opacity .6s;
+    -ms-transition: opacity .6s;
+    transition: opacity .6s;
+}
+
+.gridster .player {
+    background: #BBB;
+}
+
+
+.gridster .preview-holder {
+    border: none!important;
+    background: red!important;
+}
+
+
+/*
+ *resize charts
+ */ 
+
+/*div[dir=ltr] {
+    height: 100% !important;
+}
+
+.shiny-html-output {
+    height: 100%;
+}*/
+

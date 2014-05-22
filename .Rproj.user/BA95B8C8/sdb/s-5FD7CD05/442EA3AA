@@ -1,0 +1,16 @@
+{
+    "contents" : "#---------\n#Libraries\n#---------\nlib         <- c('reshape2',\n                 'stringr',\n                 'lubridate',\n                 'googleVis',\n                 'RJDBC',\n                 'RJSONIO',\n                 'RSQLite',\n                 'shinyAce',\n                 'shinyMCE',\n                 'shinyGridster')\n\n#Install/load required libraries\nfor (lib_name in lib){\n  if (!require(lib_name, character.only = T)) \n    install.packages(lib_name);\n  library(lib_name, character.only = T);\n}\nsource(paste0(getwd(),'/R/googleChart.R'))\n\n#DB List\nsource(paste0(getwd(),'/R/db_list.R'))  \n",
+    "created" : 1400787298383.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "719728712",
+    "id" : "442EA3AA",
+    "lastKnownWriteTime" : 1400787476,
+    "path" : "~/Desktop/dev_software/ShinyDash/global.R",
+    "project_path" : "global.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

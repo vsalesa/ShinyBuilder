@@ -1,0 +1,16 @@
+{
+    "contents" : "# ShinyDash\n\nShinyDash is a point-and-click dashboard platform based on [R/Shiny](http://www.rstudio.com/shiny/) which makes it simple to create and share live, connected dashboards.\n\nShinyDash was created with the following goals:\n* __Easy Access__ - Can be accessed from any web browser  \n* __Easy Authoring__ - Dashboards are created via a point-and-click GUI, enabling anyone with basic SQL skills to set up a professional dashboard in a matter of minutes.  \n* __Instantly Connected__ - ShinyDash charts begin as SQL queries, and are immediately linked to a live database.  Once created, the charts are refreshed daily & automatically, eliminating need to build ETL workflows.  \n* __Extensible & Modular__ - all major JavaScript libraries used in the project have been wrapped into resusable R/Shiny packages, making it easy to extend ShinyDash or to use ShinyDash components in your own projects.  \n\nShinyDash components include:\n    * [shinyGoogleCharts](https://github.com/mul118/shinyGoogleCharts) - functions for displaying and interactively editing [Google Charts](https://developers.google.com/chart/) in Shiny \n    * [shinyMCE](https://github.com/mul118/shinyMCE) - integrates [TinyMCE](http://www.tinymce.com/index.php) WYSIWYG text editor into Shiny\n    * [shinyAce](https://github.com/trestletech/shinyAce) - integrates [Ace](http://ace.c9.io/#nav=about) code editor into Shiny\n    * [shinyGridster](https://github.com/wch/shiny-gridster) - integrates the [gridster.js](http://gridster.net/) draggable framework into Shiny\n\n\n## Install \n\nTo install, run\n\n```r\nif (!require(\"devtools\"))\n  install.packages(\"devtools\")\ndevtools::install_github(\"shinyDash\", \"mul118\")\n```\n\nIf want to run ShinyDash from server, install Shiny Server [Shiny Server](http://www.rstudio.com/shiny/server/)\n\n## Configure\n\n* Add information for your database(s) of choice to the db_list.R file\n* Set up cron job to update all dashboards by running the update_dashboards.R script \n\n```\nsudo Rscript /srv/shiny-server/shiny-dashboards/dashboards/gridster_dash/update_dashboards.R \n```\n\n## Use\n\nLive demo available __here__.\n\n\n\n    ",
+    "created" : 1400788182770.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2946980665",
+    "id" : "B3958EE3",
+    "lastKnownWriteTime" : 1400785489,
+    "path" : "~/Desktop/dev_software/ShinyDash/readme.md",
+    "project_path" : "readme.md",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "markdown"
+}
