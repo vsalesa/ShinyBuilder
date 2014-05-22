@@ -22,7 +22,7 @@ To install, run
 ```r
 if (!require("devtools"))
   install.packages("devtools")
-devtools::install_github("shinyDash", "mul118")
+devtools::install_github("shinyDash", "iheartradio")
 ```
 
 If want to run ShinyDash from server, install Shiny Server [Shiny Server](http://www.rstudio.com/shiny/server/)
@@ -33,7 +33,7 @@ If want to run ShinyDash from server, install Shiny Server [Shiny Server](http:/
 * Set up cron job to update all dashboards by running the update_dashboards.R script 
 
 ```
-sudo Rscript /srv/shiny-server/shiny-dashboards/dashboards/gridster_dash/update_dashboards.R 
+sudo Rscript /srv/shiny-server/ShinyDash/R/update_dashboards.R 
 ```
 
 ## Use
