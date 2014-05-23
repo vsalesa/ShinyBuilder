@@ -1,6 +1,6 @@
 available_dashboards <- str_replace(list.files(str_c(getwd(),'/dashboards')), '.RData', '')
 
-shinyUI(fluidPage(
+shinyUI(fixedPage(
   #Includes
   tags$head(HTML('<script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>')),
   includeScript(str_c(getwd(),'/www/shiny-tinymce-bindings.js')),
@@ -21,10 +21,10 @@ shinyUI(fluidPage(
              li(class = "dropdown",
                 a(class="dropdown-toggle", "data-toggle" = "dropdown", 'File', b(class = "caret")),
                 ul(class = "dropdown-menu",
-                   #li(a(icon('dashboard'), 'New Dashboard')),
                    li(a(id="save_dash_btn", class="action-button shiny-input-bound", icon('floppy-o'), 'Save')),
                    li(class = "divider"),
                    li(a(id="save_as_modal_btn", 'data-toggle' = "modal", 'data-target' = '#save_as_modal', icon('floppy-o'), 'Save As')),
+                   li(a(id="new_dash_modal_btn", 'data-toggle' = "modal", 'data-target' = '#new_dash_modal', icon('dashboard'), 'New Dashboard')),
                    li(a(id="delete_dash_modal_btn", class = 'action-button', 'data-toggle' = "modal", 'data-target' = '#delete_modal', icon('trash-o'), 'Delete Dashboard'))
                 )
              )
@@ -48,11 +48,11 @@ shinyUI(fluidPage(
 
   #Gridster frame
   br(),
-  gridster(id = 'gridster_frame', marginx = 10, marginy = 10, width = 100, height = 100),
+  gridster(id = 'gridster_frame', marginx = 10, marginy = 10, width = 100, height = 50),
   hr(), 
   
   #'Delete' modal
-  div(id = 'delete_modal', class = 'modal container hide', style = 'width: 100%; margin: auto; left: 0', tabindex = '-1',
+  div(id = 'delete_modal', class = 'modal hide',
       div(class = 'modal-header',
           tags$div(class = 'button', class = 'close', 'data-dismiss' = 'modal', 'aria-hidden'='true', 'x'),
           h3('Confirm Deletion')),
@@ -63,16 +63,25 @@ shinyUI(fluidPage(
                <button type="button" data-dismiss="modal" class="btn btn-primary action-button" id="delete_dash_btn">Delete Dashboard</button>')) 
   ),
   
-
-  #'Save As' Modal
-  div(id = 'save_as_modal', class = 'modal container hide', style = 'width: 100%; margin: auto; left: 0', tabindex = '-1',
-      div(class = 'modal-header',
-          tags$div(class = 'button', class = 'close', 'data-dismiss' = 'modal', 'aria-hidden'='true', 'x'),
-          h3('Save As')
-      ),
+  #'New Dashboard' Modal
+  div(id = 'new_dash_modal', class = 'modal hide', 
+      div(class = 'modal-header', tags$div(class = 'button', class = 'close', 'data-dismiss' = 'modal', 'aria-hidden'='true', 'x'), h3('New Dashboard')),
       div(class = 'modal-body', 
           p('Enter a new dashboard title:'), 
-          textInput('save_file_name', label = NULL, value = '')
+          textInput('new_dash_file_name', label = NULL, value = '')
+      ),
+      div(class = 'modal-footer',
+          HTML('<button type="button" data-dismiss="modal" class="btn">Close</button>
+                  <button type="button" data-dismiss="modal" class="btn btn-primary action-button" id="new_dash_btn">Create Dashboard</button>')
+      )
+  ),
+
+  #'Save As' Modal
+  div(id = 'save_as_modal', class = 'modal hide', 
+      div(class = 'modal-header', tags$div(class = 'button', class = 'close', 'data-dismiss' = 'modal', 'aria-hidden'='true', 'x'), h3('Save As')),
+      div(class = 'modal-body', 
+          p('Enter a new dashboard title:'), 
+          textInput('save_as_file_name', label = NULL, value = '')
           ),
       div(class = 'modal-footer',
           HTML('<button type="button" data-dismiss="modal" class="btn">Close</button>
@@ -102,14 +111,11 @@ shinyUI(fluidPage(
           )
      ),
     div(class = 'modal-footer',
-           HTML('<button type="button" data-dismiss="modal" class="btn">Close</button>
+           HTML('<button type="button" data-dismiss="modal" class="btn">Cancel</button>
                   <button type="button" data-dismiss="modal" class="btn btn-primary action-button" id="save_changes">Save Query</button>')
       )
   ),
   p('powered by iHR DataScience', align = 'left'),    
-  
-  #Debugging Outputs
-  #textOutput('last_update_list'),
   
   #Main Stylesheet
   includeCSS(str_c(getwd(), '/www/main.css'))

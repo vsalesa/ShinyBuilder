@@ -1,0 +1,16 @@
+{
+    "contents" : "db_list <-  list(\n  #Sample SQLite database\n  SQLite = list(\n    db        = dbConnect(dbDriver('SQLite'), dbname = paste0(getwd(),'/data/births.db')),\n    qry_fn    = RJDBC::dbGetQuery,\n    smpl_qry  = 'SELECT * FROM births'\n  )\n)\n\n\n\n# births    <- read.csv(paste0(getwd(),'/data/births.csv'))\n# sample_db <- dbConnect(dbDriver('SQLite'), dbname = paste0(getwd(),'/data/births.db'))\n# dbWriteTable(sample_db, 'births', births)\n# dbGetQuery(sample_db, 'SELECT * FROM births')\n# dbDisconnect(sample_db)",
+    "created" : 1400868639640.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "68978144",
+    "id" : "4AE39CF8",
+    "lastKnownWriteTime" : 1400787423,
+    "path" : "~/Desktop/dev_software/ShinyDash/R/db_list.R",
+    "project_path" : "R/db_list.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

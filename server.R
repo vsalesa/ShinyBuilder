@@ -19,6 +19,8 @@ default_data      <- do.call(default_db_obj$qry_fn, list(default_db_obj$db, defa
 curr_result_tbl   <- default_data
 default_dashboard <- 'Sample Dashboard'
 
+#x      <- try(do.call(default_db_obj$qry_fn, list(default_db_obj$db, 'SELECT sex2 FROM births'))) 
+
 #-----------------------
 #Shiny Server Definition
 #-----------------------
@@ -27,6 +29,7 @@ shinyServer(function(input, output, session) {
   #Initialization constants
   first_time            <- 1
   update_preview_val    <- 0
+  save_changes_val      <- 0
   
   #Determine Available dashboards
   available_dashboards  <- reactive({invalidateLater(1000*30, session); str_replace(list.files(str_c(getwd(),'/dashboards')), '.RData', '')})
@@ -81,13 +84,16 @@ shinyServer(function(input, output, session) {
   observe({
     if(input$save_changes > 0){
       isolate({
-        chart_id                  <- input$active_chart_id
+        new_input_data <- try(do.call(selected_qry_fn(), list(selected_db(), input$code)))
         
-        input_dbs[[chart_id]]     <- input$selected_db
-        print(input_dbs[[chart_id]])
-        input_queries[[chart_id]] <- input$code
-        input_data[[chart_id]]    <- do.call(selected_qry_fn(), list(selected_db(), input$code))
-        last_update[[chart_id]]   <- now()
+        if(is.data.frame(new_input_data)){                    
+          chart_id                  <- input$active_chart_id
+          input_dbs[[chart_id]]     <- input$selected_db
+          print(input_dbs[[chart_id]])
+          input_queries[[chart_id]] <- input$code
+          input_data[[chart_id]]    <- new_input_data
+          last_update[[chart_id]]   <- now()
+        }
       })
     }
   }) 
@@ -97,7 +103,7 @@ shinyServer(function(input, output, session) {
     active_chart_id <- input$active_chart_id
     if(active_chart_id != ''){
       if(input$update_preview > update_preview_val){ 
-        #If change comes from 'run query'
+        #If change comes from 'Update Preview'
         update_preview_val     <<- input$update_preview
         return(isolate(do.call(selected_qry_fn(), list(selected_db(), input$code))))
       }
@@ -169,7 +175,7 @@ shinyServer(function(input, output, session) {
       widget_html <- chartWidget(chart_id, 'Table', '{}')
       dataList <- list(id = 'gridster_frame', html = widget_html)
       dataList$size_x <- 2
-      dataList$size_y <- 1
+      dataList$size_y <- 4
       session$sendCustomMessage("shinyGridster.add_widget", dataList) 
     
     }
@@ -190,6 +196,8 @@ shinyServer(function(input, output, session) {
         widget_html     <- paste0(tags$li(class = 'new', id = widget_id, remove_btn, p('.', style = 'color: transparent'), text_area_tmpl))
         
         dataList        <- list(id = 'gridster_frame', html = widget_html)
+        dataList$size_x <- 2
+        dataList$size_y <- 4
         session$sendCustomMessage("shinyGridster.add_widget", dataList)
       }
     }
@@ -232,19 +240,27 @@ shinyServer(function(input, output, session) {
     }
   
   #Save/Save As Observers
+  observe({
+    if(input$save_dash_btn > 0) 
+      saveDashBoard(selected_dashboard())
+  })
   observe({  
     if(input$save_as_dash_btn > 0) {
-      dashboard_title <- isolate(input$save_file_name)
+      dashboard_title <- isolate(input$save_as_file_name)
       saveDashBoard(dashboard_title)
       new_available_dashboards  <- str_replace(list.files(str_c(getwd(),'/dashboards')), '.RData', '')
       selected_dashboard        <- dashboard_title
       updateSelectInput(session, 'sel_dashboard', choices = new_available_dashboards, selected = dashboard_title) 
     }
   })
-  observe({
-    if(input$save_dash_btn > 0){
-      #print(selected_dashboard())
-      saveDashBoard(selected_dashboard())
+  #New Dash Observer
+  observe({  
+    if(input$new_dash_btn > 0) {
+      dashboard_title           <- isolate(input$new_dash_file_name)
+      file.copy(str_c(getwd(),'/data/empty_dash.RData'), str_c(getwd(),'/dashboards/', dashboard_title, '.RData'))
+      new_available_dashboards  <- str_replace(list.files(str_c(getwd(),'/dashboards')), '.RData', '')
+      selected_dashboard        <- dashboard_title
+      updateSelectInput(session, 'sel_dashboard', choices = new_available_dashboards, selected = dashboard_title) 
     }
   })
 

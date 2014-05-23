@@ -38,7 +38,7 @@ sudo Rscript /srv/shiny-server/ShinyDash/R/update_dashboards.R
 
 ## Use
 
-Live demo available __here__.
+Live demo of the open source candidate code is available at: http://shiny.iheart.com:3838/shiny-dashboards/dashboards/ShinyDash/
 
 
 
