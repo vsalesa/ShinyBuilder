@@ -21,7 +21,6 @@ $.extend(shinymceInputBinding, {
   //$(el).off(".incrementBinding");
   }
 });
-
 Shiny.inputBindings.register(shinymceInputBinding);
 
 tinymce.init({

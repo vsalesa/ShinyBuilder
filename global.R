@@ -20,5 +20,8 @@ for (lib_name in lib){
 }
 source(paste0(getwd(),'/R/googleChart.R'))
 
-#DB List
+#DB list
 source(paste0(getwd(),'/R/db_list.R'))  
+
+#Available dashboards
+available_dashboards <- str_replace(list.files(str_c(getwd(),'/dashboards')), '.RData', '')
