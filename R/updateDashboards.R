@@ -1,7 +1,6 @@
 #' Update All Dashboards
 #' 
 #' @param dashboards a vector of dashboard names.  By default, all dashboards in the dashboards directory are updated
-#' @import RSQLite, RJDBC
 #' @export 
 #' @examples
 #' updateDashboards()
@@ -9,9 +8,10 @@ updateDashboards <- function(dashboards = NULL){
   
   if(is.null(dashboards)) 
     #dashboards <- list.files(path = paste0(getwd(),'/dashboards'), full.names = T)
-    dashboards <- list.files(path = 'ShinyBuilder/dashboards', full.names = T)
+    dashboards <- list.files(path = system.file('dashboards', package = 'ShinyBuilder'), full.names = T)
   
-  source('ShinyBuilder/R/db_list.R')
+  db_list <- dbListInit()
+  #source('ShinyBuilder/R/db_list.R')
 
   for (dashboard_file in dashboards){
     #Load current dashboard

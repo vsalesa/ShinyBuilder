@@ -18,10 +18,10 @@ for (lib_name in lib){
     install.packages(lib_name);
   library(lib_name, character.only = T);
 }
-source(paste0(getwd(),'/R/googleChart.R'))
+source(system.file('googleChart.R', package = 'ShinyBuilder'))
 
 #DB list
-source(paste0(getwd(),'/R/db_list.R'))  
+db_list <- dbListInit()
 
 #Available dashboards
-available_dashboards <- str_replace(list.files(str_c(getwd(),'/dashboards')), '.RData', '')
+available_dashboards <- str_replace(list.files(path = system.file('dashboards', package = 'ShinyBuilder')), '.RData', '')

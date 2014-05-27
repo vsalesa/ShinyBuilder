@@ -1,5 +1,6 @@
-#` Run an instance of shinyBuilder
+#` Run ShinyBuilder
 #'
+#' Run an instance of ShinyBuilder
 #' @import shiny
 #' @export
 runShinyBuilder <- function(){
