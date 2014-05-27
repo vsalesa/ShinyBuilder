@@ -25,7 +25,7 @@ if (!require("devtools"))
 devtools::install_github("ShinyBuilder", "iheartradio")
 ```
 
-If want to run ShinyBuilder from server, install Shiny Server [Shiny Server](http://www.rstudio.com/shiny/server/)
+If want to run ShinyBuilder from server, install [Shiny Server](http://www.rstudio.com/shiny/server/)
 
 ## Configure
 

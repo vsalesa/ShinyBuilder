@@ -1,3 +1,4 @@
+~%2FDesktop%2Fdev_software%2FShinyBuilder%2Freadme.md="512148D"
 ~%2FDesktop%2Fdev_software%2FShinyDash%2FDESCRIPTION="F3CA16"
 ~%2FDesktop%2Fdev_software%2FShinyDash%2FLICENSE.txt="B7833089"
 ~%2FDesktop%2Fdev_software%2FShinyDash%2FR%2FShinyDash.R="1181558E"
@@ -8,6 +9,7 @@
 ~%2FDesktop%2Fdev_software%2FShinyDash%2Fui.R="2F7EE775"
 ~%2FDesktop%2Fdev_software%2FShinyDash%2Fwww%2Fshiny-gridster-bindings.js="256D294C"
 ~%2FDesktop%2Fdev_software%2FShinyDash%2Fwww%2Fshiny-tinymce-bindings.js="2C3C73C0"
+~%2FDesktop%2Fdev_software%2Fshiny-dashboards%2Fdashboards%2Fcr_stats_dash%2Fserver.R="595E9F53"
 ~%2FDesktop%2Fdev_software%2FshinyMCE%2FR%2FshinyMCE.R="54FE2473"
 ~%2FDesktop%2Fdev_software%2FshinyMCE%2Finst%2Feditor_demo.R="9B2F9FB9"
 ~%2FDesktop%2Fdev_software%2FshinyMCE%2Finst%2Fwww%2Fshiny-tinymce-bindings.js="936D649D"
