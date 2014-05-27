@@ -1,9 +1,9 @@
-Package: ShinyDash
+Package: ShinyBuilder
 Type: Package
 Title: Visual dashboard builder platform based on R/Shiny
 Version: 0.099
 Date: 2014-01-01
 Author: Misha Lisovich, Steve Spagnola, Jonas Pranckevicius
 Maintainer: Misha Lisovich <mikhail.lisovich@gmail.com>
-Description: ShinyDash is a visual, point-and-click dashboard builder platform based on R/Shiny which makes it simple to create and share live, connected dashboards
+Description: ShinyBuilder is a visual, point-and-click dashboard builder platform based on R/Shiny which makes it simple to create and share live, connected dashboards
 License: MIT
