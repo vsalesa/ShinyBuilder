@@ -40,6 +40,21 @@ sudo Rscript /srv/shiny-server/ShinyBuilder/R/update_dashboards.R
 
 Live demo of the open source candidate code is available at: http://shiny.iheart.com:3838/shiny-dashboards/dashboards/ShinyBuilder/
 
+## Frontend Development
+
+Javascript and CSS files are minified for improved performance, with the distribution files located in the `www` folder.  If you would like to develop either the CSS or Javascript, you can find the source files in the `web` folder.
+
+You will need [npm](https://www.npmjs.org/) installed to setup the development environment, this can be done on a Macintosh via [Homebrew](http://brew.sh/) with `brew install npm`.
+
+Once npm is installed, navigate to the web directory and run the following to setup your development environment and write the distribution files:
+
+```
+npm install
+grunt
+```
+
+Running grunt will compile the source files in the web folder into their distribution versions and watch for changes within the file system, automatically recompiling the frontend files and checking for Javascript errors.
+
 __NOTE:__ For the open source release, the demo will be hosted externally at RStudio's [ShinyApps](http://www.rstudio.com/shiny/hosted/) service.
 
 

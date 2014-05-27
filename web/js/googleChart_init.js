@@ -1,10 +1,8 @@
-$(document).ready(function () {
-
 //Google Chart Output Binding
 var googleChartOutputBinding = new Shiny.OutputBinding();
 $.extend(googleChartOutputBinding, {
   find: function(scope) {
-    return $('.shinyGoogleChart')
+    return $('.shinyGoogleChart');
   },
   getId: function(el) {
     return $(el).attr('id');
@@ -17,7 +15,7 @@ $.extend(googleChartOutputBinding, {
         chartData.addColumn(obj, i);
       });
       chartData.addRows(JSON.parse(data.dataJSON));
-      wrapper = new google.visualization.ChartWrapper({
+      var wrapper = new google.visualization.ChartWrapper({
             dataTable:    chartData,
             containerId:  $(el).attr('id'),
             chartType:    data.chartType,
@@ -25,7 +23,7 @@ $.extend(googleChartOutputBinding, {
       });
       wrapper.draw();
       $(el).data('chart', wrapper);
-    };
+    }
     google.load("visualization", "1", {"callback" : googleLoaded, "packages" : "charteditor"});
   },
   renderError: function(el, err){
@@ -59,4 +57,3 @@ $.extend(chartEditorInputBinding, {
 });
 Shiny.inputBindings.register(chartEditorInputBinding);   
     
-});

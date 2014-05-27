@@ -1,8 +1,7 @@
-$(function(){ //DOM Ready
+
  
   // Initialize any divs with class gridster
   $(".gridster ul").each(function() {
-    $el = $(this);
 
     var marginx = Number(this.getAttribute('data-marginx')) || 10;
     var marginy = Number(this.getAttribute('data-marginy')) || 10;
@@ -18,4 +17,3 @@ $(function(){ //DOM Ready
     });
   });
 
-});

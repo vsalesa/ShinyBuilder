@@ -1,0 +1,16 @@
+{
+  "laxcomma": true,
+  "browser": true,
+  "globalstrict": true,
+  "strict": false,
+  "expr": true,
+  "globals": {
+    "$": true,
+    "Shiny": true,
+    "google": true,
+    "tinymce": true,
+    "tinyMCE": true,
+    "console": true,
+    "alert": true
+  }
+}

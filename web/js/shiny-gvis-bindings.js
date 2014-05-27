@@ -9,7 +9,7 @@
             var availableHeight = $('#' + divId).parent().height();
             var newHeight = availableHeight - 43;
             $('#' + divId + ', #' + divId + ' > div, #' + divId + ' > div > div, #' + divId + ' > div > div > table').css('height', newHeight + 'px');
-            opts = JSON.parse($("#"+divId+'_opts').attr('value'));
+            var opts = JSON.parse($("#"+divId+'_opts').attr('value'));
             window[k].setOptions(opts);
             window[k].draw();
             $('#' + divId + ', #' + divId + ' > div, #' + divId + ' > div > div, #' + divId + ' > div > div > table').css('height', newHeight + 'px');
@@ -35,7 +35,7 @@ $(document).on("click", "button.charts-buttonset-action", function(evt) {
   }
   Shiny.bindAll();
   setTimeout(function(){gvisRefresh();}, 300);
-})
+});
 
   
   

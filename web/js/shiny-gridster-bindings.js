@@ -1,6 +1,5 @@
 var first_load = 1;
 
-$(function() {
   
     //Handler to load selected dashboard  
  /*   setTimeout(function(){
@@ -14,16 +13,16 @@ $(function() {
     $(document).on({
       mouseenter: function () {
         var $el = $(this);
-        $el.find('div.btn, button.deleteme').fadeIn(duration = 100);
+        $el.find('div.btn, button.deleteme').fadeIn(100);
       },
       mouseleave: function () {
         var $el = $(this);
-        $el.find('div.btn, button.deleteme').fadeOut(duration = 100);
+        $el.find('div.btn, button.deleteme').fadeOut(100);
       }
     }, ".gridster ul li ");
 
     setTimeout(function() {
-      $(document).find('.gridster ul li div.btn, .gridster ul li button.deleteme').fadeOut(duration = 100);
+      $(document).find('.gridster ul li div.btn, .gridster ul li button.deleteme').fadeOut(100);
     }, 500);
 
     //Delete widget button handler
@@ -147,4 +146,3 @@ Shiny.inputBindings.register(shinyGridsterBinding);
     
 
 
-});

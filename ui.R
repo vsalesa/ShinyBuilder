@@ -5,10 +5,11 @@ shinyUI(fixedPage(
   #includeScript(str_c(getwd(),'/www/shiny-tinymce-bindings.js')),
   tags$head(tags$script(src ="//tinymce.cachefly.net/4.0/tinymce.min.js")),
   tags$head(tags$script(src = 'shinyMCE/shiny-tinymce-bindings.js')),
-  includeScript(str_c(getwd(),'/www/shiny-gridster-bindings.js')),
-  includeScript(str_c(getwd(),'/www/json2.js')),  
+  #includeScript(str_c(getwd(),'/www/shiny-gridster-bindings.js')),
+  #includeScript(str_c(getwd(),'/www/json2.js')),  
   tags$head(HTML('<script type="text/javascript" src="//www.google.com/jsapi"></script>')),
-  includeScript(paste0(getwd(),'/www/googleChart_init.js')),
+  #includeScript(paste0(getwd(),'/www/googleChart_init.js')),
+  includeScript(str_c(getwd(),'/www/ShinyBuilder.min.js')),  
 
   #Navbar
   div(class="navbar navbar-static-top navbar", 
@@ -120,5 +121,5 @@ shinyUI(fixedPage(
   #verbatimTextOutput('tinymce_test'),
   
   #Main Stylesheet
-  includeCSS(str_c(getwd(), '/www/main.css'))
+  includeCSS(str_c(getwd(), '/www/ShinyBuilder.min.css'))
 ))
