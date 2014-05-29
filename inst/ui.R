@@ -1,12 +1,12 @@
 shinyUI(fixedPage(
   
   #Includes
-  tags$head(tags$script(src ="//tinymce.cachefly.net/4.0/tinymce.min.js")),
+  tags$head(tags$script(src = "//tinymce.cachefly.net/4.0/tinymce.min.js")),
   tags$head(tags$script(src = 'shinyMCE/shiny-tinymce-bindings.js')),
-  tags$head(tags$script(src = 'ShinyBuilder/shiny-gridster-bindings.js')),
-  tags$head(tags$script(src = 'ShinyBuilder/json2.js')),  
-  tags$head(HTML('<script type="text/javascript" src="//www.google.com/jsapi"></script>')),
-  tags$head(tags$script(src = 'ShinyBuilder/googleChart_init.js')),
+  includeScript(str_c(sb_dir, 'www/shiny-gridster-bindings.js')), 
+  includeScript(str_c(sb_dir, 'www/json2.js')),
+  tags$head(tags$script(src = "//www.google.com/jsapi")),
+  includeScript(str_c(sb_dir, 'www/googleChart_init.js')),
 
   #Navbar
   div(class="navbar navbar-static-top navbar", 
@@ -115,8 +115,6 @@ shinyUI(fixedPage(
   ),
   p('powered by iHR DataScience', align = 'left'),    
   
-  #verbatimTextOutput('tinymce_test'),
-  
   #Main Stylesheet
-  includeCSS(str_c(getwd(), '/www/main.css'))
+  includeCSS(str_c(sb_dir, '/www/main.css'))
 ))

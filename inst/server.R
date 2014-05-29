@@ -32,7 +32,7 @@ shinyServer(function(input, output, session) {
   save_changes_val      <- 0
   
   #Determine Available dashboards
-  available_dashboards  <- reactive({invalidateLater(1000*30, session); str_replace(list.files(path = system.file('dashboards', package = 'ShinyBuilder')), '.RData', '')})
+  available_dashboards  <- reactive({invalidateLater(1000*30, session); str_replace(list.files(str_c(sb_dir, 'dashboards/')), '.RData', '')})
   
   #Determine selected dashboard from url
   selected_dashboard <- reactive({
@@ -55,7 +55,7 @@ shinyServer(function(input, output, session) {
   observe({
     if(input$delete_dash_btn > 0){
       if(isolate(selected_dashboard()) != default_dashboard){
-        file.remove(str_c(system.file('dashboards/', package = 'ShinyBuilder'), isolate(selected_dashboard()),'.RData')) 
+        file.remove(str_c(sb_dir, 'dashboards/', isolate(selected_dashboard()),'.RData')) 
         session$sendCustomMessage(type = "shiny.go_to_url", list(url = default_dashboard))
       }
     }
@@ -227,14 +227,14 @@ shinyServer(function(input, output, session) {
           else if(str_detect(widget_id, 'textArea')){
             textarea_id     <- str_replace(widget_id, 'w_','')
             dashboard_state[[i]]$content <-  input[[textarea_id]]
-            print(str_c(textarea_id,' content: ', input[[textarea_id]]))
+            #print(str_c(textarea_id,' content: ', input[[textarea_id]]))
           }
           else{
             print('Unknown widget')
           }  
         }
         #Save dashboard state
-        save(list = c('dashboard_state'), file = str_c(system.file('dashboards/', package = 'ShinyBuilder'), dashboard_title, '.RData'))
+        save(list = c('dashboard_state'), file = str_c(sb_dir, 'dashboards/', dashboard_title, '.RData'))
         #print('====Saved Object===='); print(dashboard_state)
       })
     }
@@ -248,7 +248,7 @@ shinyServer(function(input, output, session) {
     if(input$save_as_dash_btn > 0) {
       dashboard_title <- isolate(input$save_as_file_name)
       saveDashBoard(dashboard_title)
-      new_available_dashboards  <- str_replace(list.files(system.file('dashboards/', package = 'ShinyBuilder')), '.RData', '')
+      new_available_dashboards  <- str_replace(list.files(str_c(sb_dir, 'dashboards/')), '.RData', '')
       selected_dashboard        <- dashboard_title
       updateSelectInput(session, 'sel_dashboard', choices = new_available_dashboards, selected = dashboard_title) 
     }
@@ -257,8 +257,8 @@ shinyServer(function(input, output, session) {
   observe({  
     if(input$new_dash_btn > 0) {
       dashboard_title           <- isolate(input$new_dash_file_name)
-      file.copy(str_c(system.file('data/', package = 'ShinyBuilder'),'empty_dash.RData'), str_c(system.file('dashboards/', package = 'ShinyBuilder'), dashboard_title, '.RData'))
-      new_available_dashboards  <- str_replace(list.files(system.file('dashboards/', package = 'ShinyBuilder')), '.RData', '')
+      file.copy(str_c(sb_dir, 'data/empty_dash.RData'), str_c(sb_dir, 'dashboards/', dashboard_title, '.RData'))
+      new_available_dashboards  <- str_replace(list.files(str_c(sb_dir, 'dashboards/')), '.RData', '')
       selected_dashboard        <- dashboard_title
       updateSelectInput(session, 'sel_dashboard', choices = new_available_dashboards, selected = dashboard_title) 
     }
@@ -268,7 +268,7 @@ shinyServer(function(input, output, session) {
   #Load dash observer
   observe({
         #Load data
-        load(file = str_c(system.file('dashboards/', package = 'ShinyBuilder'), selected_dashboard(), '.RData'))
+        load(file = str_c(sb_dir, 'dashboards/', selected_dashboard(), '.RData'))
         #print('====Loaded Object====')print(dashboard_state)
         
         #Load widgets
@@ -319,9 +319,9 @@ shinyServer(function(input, output, session) {
   })
   
   #Render debugging outputs
-  output$last_update_list <- renderPrint({reactiveValuesToList(last_update)})
+  #output$last_update_list <- renderPrint({reactiveValuesToList(last_update)})
   #output$active_chart_id <- renderText({input$active_chart_id})
-  output$tinymce_test   <- renderText({input$textArea1})
+  #output$tinymce_test   <- renderText({input$textArea1})
   #output$gridster_state  <- renderPrint({fromJSON(input$gridster_frame)})
   #output$gridster_test <- renderPrint({fromJSON(input$gridster_state)})
   

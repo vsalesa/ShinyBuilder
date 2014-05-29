@@ -10,7 +10,8 @@ lib         <- c('reshape2',
                  'RSQLite',
                  'shinyAce',
                  'shinyMCE',
-                 'shinyGridster')
+                 'shinyGridster',
+                 'ShinyBuilder')
 
 #Install/load required libraries
 for (lib_name in lib){
@@ -23,5 +24,12 @@ source(system.file('googleChart.R', package = 'ShinyBuilder'))
 #DB list
 db_list <- dbListInit()
 
+#Shinybuilder directory
+sb_dir <- system.file('', package = 'ShinyBuilder')
+#sb_dir <- '/Users/cccnyc1mal/Library/R/3.0/library/ShinyBuilder/'
+
 #Available dashboards
-available_dashboards <- str_replace(list.files(path = system.file('dashboards', package = 'ShinyBuilder')), '.RData', '')
+available_dashboards <- str_replace(list.files(path = str_c(sb_dir,'dashboards')), '.RData', '')
+
+
+
