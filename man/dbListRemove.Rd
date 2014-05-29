@@ -1,0 +1,13 @@
+\name{dbListRemove}
+\alias{dbListRemove}
+\title{Remove a database from db list}
+\usage{
+dbListRemove(db_name)
+}
+\arguments{
+  \item{db_name}{name of the database to be removed}
+}
+\description{
+Removes a database from db_list.
+}
+

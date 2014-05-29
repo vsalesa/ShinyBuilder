@@ -14,12 +14,12 @@ inline_opts     <- 'inline: true,
 #Default data
 default_db_name   <- names(db_list)[1]
 default_db_obj    <- db_list[[default_db_name]]
-default_qry       <- default_db_obj$smpl_qry
-default_data      <- do.call(default_db_obj$qry_fn, list(default_db_obj$db, default_qry))
+default_query     <- default_db_obj$smpl_qry
+default_data      <- do.call(default_db_obj$query_fn, list(default_db_obj$db, default_query))
 curr_result_tbl   <- default_data
 default_dashboard <- 'Sample Dashboard'
 
-#x      <- try(do.call(default_db_obj$qry_fn, list(default_db_obj$db, 'SELECT sex2 FROM births'))) 
+#x      <- try(do.call(default_db_obj$query_fn, list(default_db_obj$db, 'SELECT sex2 FROM births'))) 
 
 #-----------------------
 #Shiny Server Definition
@@ -78,13 +78,13 @@ shinyServer(function(input, output, session) {
     
   #Selected Database
   selected_db       <- reactive({db_list[[input$selected_db]]$db})
-  selected_qry_fn   <- reactive({db_list[[input$selected_db]]$qry_fn})
+  selected_query_fn   <- reactive({db_list[[input$selected_db]]$query_fn})
   
   #Save Query Button
   observe({
     if(input$save_changes > 0){
       isolate({
-        new_input_data <- try(do.call(selected_qry_fn(), list(selected_db(), input$code)))
+        new_input_data <- try(do.call(selected_query_fn(), list(selected_db(), input$code)))
         
         if(is.data.frame(new_input_data)){                    
           chart_id                  <- input$active_chart_id
@@ -105,7 +105,7 @@ shinyServer(function(input, output, session) {
       if(input$update_preview > update_preview_val){ 
         #If change comes from 'Update Preview'
         update_preview_val     <<- input$update_preview
-        return(isolate(do.call(selected_qry_fn(), list(selected_db(), input$code))))
+        return(isolate(do.call(selected_query_fn(), list(selected_db(), input$code))))
       }
       else{ #If change comes from switching active tile
         return(input_data[[active_chart_id]])
@@ -169,7 +169,7 @@ shinyServer(function(input, output, session) {
     
       chart_id                  <- str_c('gItemPlot', num_charts)
       input_dbs[[chart_id]]     <- default_db_name
-      input_queries[[chart_id]] <- default_qry
+      input_queries[[chart_id]] <- default_query
       input_data[[chart_id]]    <- default_data
       
       widget_html <- chartWidget(chart_id, 'Table', '{}')

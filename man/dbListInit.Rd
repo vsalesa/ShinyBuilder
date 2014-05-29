@@ -1,10 +1,17 @@
 \name{dbListInit}
 \alias{dbListInit}
-\title{Placeholder function}
+\title{Initialize connections in db list}
 \usage{
 dbListInit()
 }
+\value{
+an initialized db_list object
+}
 \description{
-Placeholder function
+Load db list from file, initializing connections to all
+included databases.
+}
+\examples{
+db_list <- dbListInit()
 }
 
