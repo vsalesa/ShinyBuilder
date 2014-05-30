@@ -6,7 +6,8 @@
 #' db_list <- dbListInit()
 #' @export
 dbListInit <- function(){
-  load(file = paste0(getwd(),'/data/db_list.RData'))
+  sb_dir <- system.file('', package = 'ShinyBuilder')
+  load(file = paste0(sb_dir,'/data/db_list.RData'))
   lapply(db_list, function(x){x$db <- eval(x$db); x})
 }
 

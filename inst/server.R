@@ -14,12 +14,11 @@ inline_opts     <- 'inline: true,
 #Default data
 default_db_name   <- names(db_list)[1]
 default_db_obj    <- db_list[[default_db_name]]
-default_query     <- default_db_obj$smpl_qry
+default_query     <- default_db_obj$default_query
 default_data      <- do.call(default_db_obj$query_fn, list(default_db_obj$db, default_query))
 curr_result_tbl   <- default_data
 default_dashboard <- 'Sample Dashboard'
 
-#x      <- try(do.call(default_db_obj$query_fn, list(default_db_obj$db, 'SELECT sex2 FROM births'))) 
 
 #-----------------------
 #Shiny Server Definition
