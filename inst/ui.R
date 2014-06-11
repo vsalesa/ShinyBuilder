@@ -11,7 +11,7 @@ shinyUI(fixedPage(
   #Navbar
   div(class="navbar navbar-static-top navbar", 
       div(class = 'navbar-inner',
-        span(class = 'brand pull-left', list(img(src = './iheartradio.png', width="40", height="40"), 'Dashboard Builder')),
+        span(class = 'brand pull-left', list(img(src = './iheartradio.png', width="40", height="40"), 'Shiny Builder')),
         column(3, selectInput('sel_dashboard', NULL, choices = available_dashboards)),
         #File
         withTags(
