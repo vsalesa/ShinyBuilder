@@ -88,10 +88,9 @@ shinyServer(function(input, output, session) {
         if(is.data.frame(new_input_data)){                    
           chart_id                  <- input$active_chart_id
           input_dbs[[chart_id]]     <- input$selected_db
-          #print(input_dbs[[chart_id]])
           input_queries[[chart_id]] <- input$code
           input_data[[chart_id]]    <- new_input_data
-          last_update[[chart_id]]   <- now()
+          last_update[[chart_id]]   <- Sys.time()
         }
       })
     }
@@ -164,7 +163,6 @@ shinyServer(function(input, output, session) {
     #Increment num charts
     widget_counts$num_charts <- isolate(widget_counts$num_charts) + 1
     num_charts <- isolate(widget_counts$num_charts)  
-    #print(str_c('Num charts: ', num_charts))
     
       chart_id                  <- str_c('gItemPlot', num_charts)
       input_dbs[[chart_id]]     <- default_db_name
@@ -191,7 +189,6 @@ shinyServer(function(input, output, session) {
         textarea_id     <- str_c('textArea', num_textareas)
         widget_id       <- str_c('w_', textarea_id)
         text_area_tmpl  <- tinyMCE(textarea_id, 'Click to edit text.', inline_opts)
-        #text_area_tmpl  <- tags$div(id = textarea_id, class = "shinytinymce", 'Click to edit text.', style = "resize: none; width: 100%; height: 100%; border-style: none; background: gainsboro;")
         widget_html     <- paste0(tags$li(class = 'new', id = widget_id, remove_btn, p('.', style = 'color: transparent'), text_area_tmpl))
         
         dataList        <- list(id = 'gridster_frame', html = widget_html)
@@ -226,7 +223,6 @@ shinyServer(function(input, output, session) {
           else if(str_detect(widget_id, 'textArea')){
             textarea_id     <- str_replace(widget_id, 'w_','')
             dashboard_state[[i]]$content <-  input[[textarea_id]]
-            #print(str_c(textarea_id,' content: ', input[[textarea_id]]))
           }
           else{
             print('Unknown widget')
@@ -293,7 +289,6 @@ shinyServer(function(input, output, session) {
             widget_id       <- str_c('w_', textarea_id)
             
             widget_content  <- tinyMCE(textarea_id, HTML(dashboard_state[[i]]$content), inline_opts)
-            #widget_content  <- tags$div(id = textarea_id, class = "shinytinymce", HTML(dashboard_state[[i]]$content), style = "resize: none; width: 100%; height: 78%; border-style: none; background: gainsboro;")
             widget_html     <- paste0(tags$li(class = 'new', id = widget_id, remove_btn, p('.', style = 'color: transparent'), widget_content))     
           }
           else{
@@ -312,18 +307,7 @@ shinyServer(function(input, output, session) {
           session$sendCustomMessage(type = "shinyGridster.add_widget", dataList)
           
        }
-
-       #print(str_c('Loaded Charts: ', isolate(widget_counts$num_charts), ' Loaded Textareas: ', isolate(widget_counts$num_textareas)))
-
   })
-  
-  #Render debugging outputs
-  #output$last_update_list <- renderPrint({reactiveValuesToList(last_update)})
-  #output$active_chart_id <- renderText({input$active_chart_id})
-  #output$tinymce_test   <- renderText({input$textArea1})
-  #output$gridster_state  <- renderPrint({fromJSON(input$gridster_frame)})
-  #output$gridster_test <- renderPrint({fromJSON(input$gridster_state)})
-  
 })
 
 

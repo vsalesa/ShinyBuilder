@@ -1,9 +1,7 @@
 #---------
 #Libraries
 #---------
-lib         <- c('reshape2',
-                 'stringr',
-                 'lubridate',
+lib         <- c('stringr',
                  'googleVis',
                  'RJDBC',
                  'RJSONIO',
@@ -26,7 +24,6 @@ db_list <- dbListInit()
 
 #Shinybuilder directory
 sb_dir <- system.file('', package = 'ShinyBuilder')
-#sb_dir <- '/Users/cccnyc1mal/Library/R/3.0/library/ShinyBuilder/'
 
 #Available dashboards
 available_dashboards <- str_replace(list.files(path = str_c(sb_dir,'dashboards')), '.RData', '')
