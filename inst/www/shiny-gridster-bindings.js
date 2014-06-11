@@ -24,7 +24,7 @@ $(function() {
 
     setTimeout(function() {
       $(document).find('.gridster ul li div.btn, .gridster ul li button.deleteme').fadeOut(duration = 100);
-    }, 500);
+    }, 1000);
 
     //Delete widget button handler
     $(document).on('click', ".deleteme", function () {

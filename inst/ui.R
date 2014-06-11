@@ -1,4 +1,4 @@
-shinyUI(fixedPage(
+shinyUI(fluidPage(
   
   #Includes
   tags$head(tags$script(src = "//tinymce.cachefly.net/4.0/tinymce.min.js")),
@@ -46,7 +46,7 @@ shinyUI(fixedPage(
 
   #Gridster frame
   br(),
-  gridster(id = 'gridster_frame', marginx = 10, marginy = 10, width = 100, height = 50),
+  fluidRow(gridster(id = 'gridster_frame', marginx = 10, marginy = 10, width = 100, height = 50)),
   hr(), 
   
   #'Delete' modal

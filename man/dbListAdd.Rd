@@ -19,6 +19,6 @@ Adds a new database to db list.
 }
 \examples{
 db <- {dbConnect(dbDriver('SQLite'), dbname = system.file('data/births.db', package = 'ShinyBuilder'))}
-dbListAdd(db_name = 'SQLite Database', db = db, query_fn = RJDBC::dbGetQuery, sample_query = 'SELECT * FROM births')
+dbListAdd(db_name = 'SQLite Database', db = db, query_fn = RJDBC::dbGetQuery, default_query = 'SELECT * FROM births')
 }
 

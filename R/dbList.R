@@ -21,7 +21,7 @@ dbListInit <- function(){
 #' @import RJDBC 
 #' @examples
 #' db <- {dbConnect(dbDriver('SQLite'), dbname = system.file('data/births.db', package = 'ShinyBuilder'))}
-#' dbListAdd(db_name = 'SQLite Database', db = db, query_fn = RJDBC::dbGetQuery, sample_query = 'SELECT * FROM births')
+#' dbListAdd(db_name = 'SQLite Database', db = db, query_fn = RJDBC::dbGetQuery, default_query = 'SELECT * FROM births')
 #' @export
 dbListAdd <- function(db_name, db, query_fn, default_query){
   sb_dir <- system.file('', package = 'ShinyBuilder')
@@ -49,7 +49,7 @@ dbListRemove <- function(db_name){
 #' 
 #' Print the current contents of db list.
 #' @export
-dbList <- function(){
+dbListPrint <- function(){
   sb_dir <- system.file('', package = 'ShinyBuilder')
   load(file = paste0(sb_dir, 'data/db_list.RData'))
   print(db_list)
