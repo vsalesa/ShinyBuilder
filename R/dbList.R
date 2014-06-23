@@ -6,7 +6,7 @@
 #' db_list <- dbListInit()
 #' @export
 dbListInit <- function(){
-  sb_dir <- system.file('', package = 'ShinyBuilder')
+  sb_dir <- system.file(package = 'ShinyBuilder')
   load(file = paste0(sb_dir,'/data/db_list.RData'))
   lapply(db_list, function(x){x$db <- eval(x$db); x})
 }
@@ -20,17 +20,17 @@ dbListInit <- function(){
 #' @param default_query the default query to use for this connection.  
 #' @import RJDBC 
 #' @examples
-#' db <- {dbConnect(dbDriver('SQLite'), dbname = system.file('data/births.db', package = 'ShinyBuilder'))}
+#' db <- quote({dbConnect(dbDriver('SQLite'), dbname = system.file('data/births.db', package = 'ShinyBuilder'))})
 #' dbListAdd(db_name = 'SQLite Database', db = db, query_fn = RJDBC::dbGetQuery, default_query = 'SELECT * FROM births')
 #' @export
 dbListAdd <- function(db_name, db, query_fn, default_query){
-  sb_dir <- system.file('', package = 'ShinyBuilder')
-  load(file = paste0(sb_dir, 'data/db_list.RData'))
-  sb_dir[[db_name]] <- list(
-    db = quote(db),
+  sb_dir <- system.file(package = 'ShinyBuilder')
+  load(file = paste0(sb_dir, '/data/db_list.RData'))
+  db_list[[db_name]] <- list(
+    db = db,
     query_fn = query_fn,
     default_query = default_query)
-  save(db_list, file = paste0(sb_dir,'data/db_list.RData'))
+  save(db_list, file = paste0(sb_dir,'/data/db_list.RData'))
 }
 
 #' Remove a database from db list
@@ -39,10 +39,10 @@ dbListAdd <- function(db_name, db, query_fn, default_query){
 #' @param db_name name of the database to be removed
 #' @export
 dbListRemove <- function(db_name){
-  sb_dir <- system.file('', package = 'ShinyBuilder')
-  load(file = paste0(sb_dir, 'data/db_list.RData'))
-  sb_dir[[db_name]] <- NULL
-  save(db_list, file = paste0(sb_dir,'data/db_list.RData'))
+  sb_dir <- system.file(package = 'ShinyBuilder')
+  load(file = paste0(sb_dir, '/data/db_list.RData'))
+  db_list[[db_name]] <- NULL
+  save(db_list, file = paste0(sb_dir,'/data/db_list.RData'))
 }
 
 #' Print the current contents of db list
@@ -50,8 +50,8 @@ dbListRemove <- function(db_name){
 #' Print the current contents of db list.
 #' @export
 dbListPrint <- function(){
-  sb_dir <- system.file('', package = 'ShinyBuilder')
-  load(file = paste0(sb_dir, 'data/db_list.RData'))
+  sb_dir <- system.file(package = 'ShinyBuilder')
+  load(file = paste0(sb_dir, '/data/db_list.RData'))
   print(db_list)
 }
 
