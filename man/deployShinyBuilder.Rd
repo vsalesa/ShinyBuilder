@@ -26,6 +26,6 @@ the ShinyBuilder library location for saving/loading
 dashboards, databases, and config files.
 }
 \examples{
-deployShinyBuilder(dir = '/srv/shiny-server/ShinyBuilder')
+\dontrun{deployShinyBuilder(dir = '/srv/shiny-server/ShinyBuilder')}
 }
 

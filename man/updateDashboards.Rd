@@ -13,6 +13,6 @@ updateDashboards(dashboards = NULL)
 Update All Dashboards
 }
 \examples{
-updateDashboards()
+\dontrun{updateDashboards()}
 }
 

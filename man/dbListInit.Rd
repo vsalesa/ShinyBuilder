@@ -12,6 +12,6 @@ Load db list from file, initializing connections to all
 included databases.
 }
 \examples{
-db_list <- dbListInit()
+\dontrun{db_list <- dbListInit()}
 }
 
