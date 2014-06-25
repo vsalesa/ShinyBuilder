@@ -38,7 +38,7 @@ sudo Rscript /srv/shiny-server/ShinyBuilder/R/update_dashboards.R
 
 ## Use
 
-Live demo of the open source candidate code will be available at RStudio's [ShinyApps](http://www.rstudio.com/shiny/hosted/) service.
+Live demo of the open source candidate code will be available at RStudio's [ShinyApps](https://www.shinyapps.io/) service.
 
 
 
