@@ -2,7 +2,7 @@
 # https://github.com/iheartradio/ShinyBuilder
 # Licensed under the MIT License (MIT)
 
-require(shiny)
+#require(shiny)
 
 #Render Google Chart as Shiny output
 renderGoogleChart <- function(expr, env=parent.frame(), quoted = FALSE){
