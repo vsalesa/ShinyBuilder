@@ -15,7 +15,12 @@ Depends:
     R (>= 3.0)
 Imports:
     assertthat,
+    stringr,
+    googleVis,
     shiny (>= 0.9.1),
     RJDBC,
     RSQLite,
-    RJSONIO
+    RJSONIO,
+    shinyAce,
+    shinyMCE,
+    shinyGridster
