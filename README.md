@@ -1,5 +1,7 @@
 # ShinyBuilder
 
+[![Build Status](https://travis-ci.org/iheartradio/ShinyBuilder.svg?branch=master)](https://travis-ci.org/iheartradio/ShinyBuilder)
+
 ShinyBuilder is a point-and-click dashboard platform based on [R/Shiny](http://www.rstudio.com/shiny/) which makes it simple to create and share live, connected dashboards. To try it out, please see the ShinyBuilder [live demo](https://iheart.shinyapps.io/ShinyBuilder).
 
 ShinyBuilder was created with the following goals:
