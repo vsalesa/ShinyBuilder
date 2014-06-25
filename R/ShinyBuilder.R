@@ -21,7 +21,7 @@ runShinyBuilder <- function(){
 #' @param update logical value indicating whether ShinyBuilder dashboards should be periodically updated by re-running the queries.  True by default.
 #' @param times vector specifying update schedule in crontab format (i.e., minute (0-59), hour (0-23), day of month (1-31), month (1-12), day of week (0-6, Sun = 6)).  Defaults to daily updates at 12:00 AM.
 #' @examples
-#' deployShinyBuilder(dir = '/srv/shiny-server/ShinyBuilder') 
+#' \dontrun{deployShinyBuilder(dir = '/srv/shiny-server/ShinyBuilder')}
 #' @export
 deployShinyBuilder <- function(dir, update = T, times = c(0, 0, '*', '*', '*')){  
     #Copy files

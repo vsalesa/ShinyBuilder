@@ -7,7 +7,7 @@
 #' @param dashboards a vector of dashboard names.  By default, all dashboards in the dashboards directory are updated
 #' @export 
 #' @examples
-#' updateDashboards()
+#' \dontrun{updateDashboards()}
 updateDashboards <- function(dashboards = NULL){
   
   if(is.null(dashboards)) 

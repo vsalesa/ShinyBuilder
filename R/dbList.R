@@ -7,7 +7,7 @@
 #' Load db list from file, initializing connections to all included databases.
 #' @return an initialized db_list object
 #' @examples
-#' db_list <- dbListInit()
+#' \dontrun{db_list <- dbListInit()}
 #' @export
 dbListInit <- function(){
   sb_dir <- system.file(package = 'ShinyBuilder')
@@ -24,8 +24,9 @@ dbListInit <- function(){
 #' @param default_query the default query to use for this connection.  
 #' @import RJDBC 
 #' @examples
+#' \dontrun{
 #' db <- quote({dbConnect(dbDriver('SQLite'), dbname = system.file('data/births.db', package = 'ShinyBuilder'))})
-#' dbListAdd(db_name = 'SQLite Database', db = db, query_fn = RJDBC::dbGetQuery, default_query = 'SELECT * FROM births')
+#' dbListAdd(db_name = 'SQLite Database', db = db, query_fn = RJDBC::dbGetQuery, default_query = 'SELECT * FROM births')}
 #' @export
 dbListAdd <- function(db_name, db, query_fn, default_query){
   sb_dir <- system.file(package = 'ShinyBuilder')
