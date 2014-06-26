@@ -22,7 +22,6 @@ dbListInit <- function(){
 #' @param db an expression yielding a db connection object
 #' @param query_fn function used to query the database. 
 #' @param default_query the default query to use for this connection.  
-#' @import RJDBC 
 #' @examples
 #' \dontrun{
 #' db <- quote({dbConnect(dbDriver('SQLite'), dbname = system.file('data/births.db', package = 'ShinyBuilder'))})

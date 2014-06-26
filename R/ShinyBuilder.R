@@ -5,7 +5,6 @@
 #` Run ShinyBuilder
 #'
 #' Run an instance of ShinyBuilder
-#' @import shiny
 #' @export
 runShinyBuilder <- function(){
   shiny::runApp(system.file('', package = 'ShinyBuilder'))
