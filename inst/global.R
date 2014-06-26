@@ -7,7 +7,7 @@
 #---------
 library(stringr)
 library(googleVis)
-library(RJDBC)
+#library(RJDBC)
 library(RJSONIO)
 library(RSQLite)
 library(shinyAce)

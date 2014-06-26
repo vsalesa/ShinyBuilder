@@ -10,7 +10,8 @@ Description: ShinyBuilder is a visual dashboard builder platform based on
     dashboards
 License: MIT
 Suggests:
-    testthat
+    testthat,
+    RJDBC
 Depends:
     R (>= 3.0)
 Imports:
@@ -18,7 +19,6 @@ Imports:
     stringr,
     googleVis,
     shiny (>= 0.9.1),
-    RJDBC,
     RSQLite,
     RJSONIO,
     shinyAce,

@@ -19,7 +19,7 @@ ShinyBuilder components include:
 
 ## Install 
 
-To install, run
+To install, run:
 
 ```r
 if (!require("devtools"))
@@ -29,7 +29,7 @@ devtools::install_github("mul118/shinyGridster")
 devtools::install_github("iheartradio/ShinyBuilder")
 ```
 
-If all goes well, you should now be able to run ShinyBuilder locally by typing
+If all goes well, you should now be able to run ShinyBuilder locally by typing:
 
 ```r
 ShinyBuilder::runShinyBuilder()
@@ -51,12 +51,11 @@ deployShinyBuilder(dir = '/srv/shiny-server/ShinyBuilder', update = TRUE, times 
 
 ## Databases
 
-You can connect ShinyBuilder to your databases using the included `dbList` functions.
-
-For example, to add a SQL Server database, download an appropriate [JDBC driver](http://msdn.microsoft.com/en-us/sqlserver/aa937724.aspx) to the `drv` directory of the installed ShinyBuilder package, then run the following code:
+You can connect ShinyBuilder to your databases using the included `dbList` functions. For example to add a SQL Server database, download an appropriate [JDBC driver](http://msdn.microsoft.com/en-us/sqlserver/aa937724.aspx) to the `drv` directory of the installed ShinyBuilder package, install [RJDBC](http://cran.r-project.org/web/packages/RJDBC/index.html), then run the following code:
 
 ```r
 mssql_db <- quote({
+  require(RJDBC)
   sb_drv_dir <- paste0(system.file(package = 'ShinyBuilder'), '/drv')
   dbConnect(
     drv       = JDBC('com.microsoft.sqlserver.jdbc.SQLServerDriver', sb_drv_dir), 
