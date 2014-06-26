@@ -13,13 +13,13 @@ Suggests:
     testthat,
     RJDBC
 Depends:
-    R (>= 3.0)
+    R (>= 3.0),
+    RSQLite
 Imports:
     assertthat,
     stringr,
     googleVis,
     shiny (>= 0.9.1),
-    RSQLite,
     RJSONIO,
     shinyAce,
     shinyMCE,
