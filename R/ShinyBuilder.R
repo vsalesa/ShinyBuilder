@@ -7,7 +7,13 @@
 #' Run an instance of ShinyBuilder
 #' @export
 runShinyBuilder <- function(){
-  shiny::runApp(system.file('', package = 'ShinyBuilder'))
+  sb_path <- system.file(package = 'ShinyBuilder')
+  
+  #Check/set permissions
+  dir_mode <- as.numeric(as.character(file.info(paste0(sb_path, '/dashboards'))$mode))
+  if(dir_mode < 755) Sys.chmod(sbd_path, mode = "0755")
+  
+  shiny::runApp(sb_path)
 }
 
 #' Deploy ShinyBuilder to a specified directory
@@ -22,12 +28,16 @@ runShinyBuilder <- function(){
 #' @examples
 #' \dontrun{deployShinyBuilder(dir = '/srv/shiny-server/ShinyBuilder')}
 #' @export
-deployShinyBuilder <- function(dir, update = T, times = c(0, 0, '*', '*', '*')){  
+deployShinyBuilder <- function(dir, update = T, times = c(0, 0, '*', '*', '*')){
     #Copy files
+    sb_path <- system.file(package = 'ShinyBuilder')
     if(!file.exists(dir)) dir.create(dir, mode = '0755')
     if(substr(dir, nchar(dir), nchar(dir)) != '/') dir <- paste0(dir, '/')
-    sb_dir <- system.file('', package = 'ShinyBuilder')
-    file.copy(from = paste0(sb_dir, c('server.R', 'ui.R', 'global.R')), to = paste0(dir, c('server.R', 'ui.R', 'global.R')), overwrite = T)
+    file.copy(from = paste0(sb_path, '/', c('server.R', 'ui.R', 'global.R')), to = paste0(dir, c('server.R', 'ui.R', 'global.R')), overwrite = T)
+    
+    #Check/set permissions
+    dir_mode <- as.numeric(as.character(file.info(paste0(sb_path, '/dashboards'))$mode))
+    if(dir_mode < 755) Sys.chmod(sbd_path, mode = "0755")
     
     #Crontabs
     cron_script   <- "Rscript -e 'ShinyBuilder::updateDashboards()'"
