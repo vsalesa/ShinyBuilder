@@ -13,6 +13,11 @@ updateDashboards(dashboards = NULL)
 Update All Dashboards
 }
 \examples{
-\dontrun{updateDashboards()}
+\dontrun{
+#All Dashboards
+updateDashboards()
+#Selected dashboards
+updeateDashboards(c('dashboard_1', 'dashboard_2'))
+}
 }
 
