@@ -19,7 +19,7 @@ ShinyBuilder components include:
 
 ## Install 
 
-To install, run:
+To install ShinyBuilder, download and install [R](http://www.r-project.org/).  Then from the R console, run:
 
 ```r
 if (!require("devtools"))
@@ -34,6 +34,8 @@ If all goes well, you should now be able to run ShinyBuilder locally by typing:
 ```r
 ShinyBuilder::runShinyBuilder()
 ```
+
+Note: ShinyBuilder was developed and tested for the Mac and Linux platforms.  While `runShinyBuilder` should work on Windows, some admin features may not work properly. 
 
 ## Shiny Server 
 
@@ -72,6 +74,8 @@ dbListAdd(db_name = 'MSSQL', db = mssql_db, query_fn = RJDBC::dbGetQuery, defaul
 
 Please see the [Sample Dashboard](https://iheart.shinyapps.io/ShinyBuilder) for a mini-tutorial to get you started. If you have any questions, comments, concerns, etc., please feel free to consult the [ShinyBuilder mailing list](https://groups.google.com/forum/#!forum/shinybuilder). 
 
+## Customize
 
+You can customize the look and functinality of ShinyBuilder to suit your needs.  The code can be found in the inst folder, and follows standard Shiny app formatting (i.e., `ui.R`, `server.R`, and `global.R` files).  If you write an improvement, feel free to submit it as a pull request, and we'll review/merge it into the main app.
 
     
