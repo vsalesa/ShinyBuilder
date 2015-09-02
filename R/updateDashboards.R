@@ -24,18 +24,32 @@ updateDashboards <- function(dashboards = NULL){
     dashboards <- list.files(path = sbd_path, full.names = T)
   
   db_list <- dbListInit()
+  print(db_list)
 
   for (dashboard_file in dashboards){
     #Load current dashboard
     load(dashboard_file)
-    print(paste0('Updating ', dashboard_file))
+    print(paste0('Updating: ', dashboard_file))
     
     #Update chart data
     for (i in 1:length(dashboard_state)){
       if(grepl('gItemPlot', dashboard_state[[i]]$id)){
         input_query               <- dashboard_state[[i]]$query
         db_obj                    <- db_list[[dashboard_state[[i]]$db_name]]
-        dashboard_state[[i]]$data <- do.call(db_obj$query_fn, list(db_obj$db, input_query))
+        tryCatch(
+          {
+            dashboard_state[[i]]$data <- do.call(db_obj$query_fn, list(db_obj$db, input_query))
+          },
+          error=function(cond) {
+            message("Dashboard threw an error updating:")
+            message(cond)
+          }
+          warnng=function(cond) {
+            message("Dashboard threw a warning updating:")
+            message(cond)
+          }
+        )
+#dashboard_state[[i]]$data <- do.call(db_obj$query_fn, list(db_obj$db, input_query))
       }
     }
     #Save current dashboard
