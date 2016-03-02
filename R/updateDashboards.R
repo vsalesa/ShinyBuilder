@@ -43,8 +43,8 @@ updateDashboards <- function(dashboards = NULL){
           error=function(cond) {
             message("Dashboard threw an error updating:")
             message(cond)
-          }
-          warnng=function(cond) {
+          },
+          warning=function(cond) {
             message("Dashboard threw a warning updating:")
             message(cond)
           }
