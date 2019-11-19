@@ -18,10 +18,7 @@ steps:
     echo See https://aka.ms/yaml
     uname -a
   displayName: 'Run a multi-line script'
-- task: CondaEnvironment@0
-  inputs:
-    environmentName: 'testconda'
 - task: PythonScript@0
-      inputs:
-        scriptSource: 'inline'
-        script: 'print "Hello world from python"'
+  inputs:
+    scriptSource: 'inline'
+    script: 'print("Hello World")'
