@@ -1,0 +1,32 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+    uname -a
+  displayName: 'Run a multi-line script'
+- task: PythonScript@0
+  inputs:
+    scriptSource: 'inline'
+    script: 'print("Hello World")'
+- task: UseRubyVersion@0
+  inputs:
+    versionSpec: '>= 2.4'
+    addToPath: true
+- script: gem install rails && rails -v
+  displayName: 'gem install rails'
+- script: /usr/bin/ruby -e "puts 'Hello, world!'"
+  displayName: 'hello world'
