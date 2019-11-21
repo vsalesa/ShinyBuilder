@@ -25,5 +25,6 @@ steps:
 - task: UseRubyVersion@0
   inputs:
     versionSpec: '>= 2.4'
-    scriptSource: 'inline'
-    script: "puts 'Hello, world!"
+    addToPath: true
+- script: | 
+    ruby -e "puts 'Hello World'"
